@@ -1,0 +1,4 @@
+0.14.0
+lxqt-build-tools
+pkgconfig(libexif)
+pkgconfig(libmenu-cache)
