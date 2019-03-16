@@ -4,7 +4,7 @@
 #
 Name     : libfm-qt
 Version  : 0.14.1
-Release  : 2
+Release  : 3
 URL      : https://downloads.lxqt.org/downloads/libfm-qt/0.14.1/libfm-qt-0.14.1.tar.xz
 Source0  : https://downloads.lxqt.org/downloads/libfm-qt/0.14.1/libfm-qt-0.14.1.tar.xz
 Summary  : Core library of PCManFM-Qt (Qt binding for libfm)
