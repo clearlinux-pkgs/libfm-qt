@@ -6,10 +6,10 @@
 #
 Name     : libfm-qt
 Version  : 0.14.1
-Release  : 11
-URL      : https://downloads.lxqt.org/downloads/libfm-qt/0.14.1/libfm-qt-0.14.1.tar.xz
-Source0  : https://downloads.lxqt.org/downloads/libfm-qt/0.14.1/libfm-qt-0.14.1.tar.xz
-Source99 : https://downloads.lxqt.org/downloads/libfm-qt/0.14.1/libfm-qt-0.14.1.tar.xz.asc
+Release  : 12
+URL      : https://github.com/lxqt/libfm-qt/releases/download/0.14.1/libfm-qt-0.14.1.tar.xz
+Source0  : https://github.com/lxqt/libfm-qt/releases/download/0.14.1/libfm-qt-0.14.1.tar.xz
+Source1  : https://github.com/lxqt/libfm-qt/releases/download/0.14.1/libfm-qt-0.14.1.tar.xz.asc
 Summary  : A Qt/glib/gio-based lib used to develop file managers providing some file management utilities.
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -20,10 +20,13 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : doxygen
 BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
+BuildRequires : liblxqt-data
 BuildRequires : lxqt-build-tools
 BuildRequires : pkgconfig(libexif)
 BuildRequires : pkgconfig(libmenu-cache)
+BuildRequires : qtbase-dev
 BuildRequires : qttools-dev
+BuildRequires : qtx11extras-dev
 
 %description
 # libfm-qt
@@ -71,25 +74,30 @@ license components for the libfm-qt package.
 
 %prep
 %setup -q -n libfm-qt-0.14.1
+cd %{_builddir}/libfm-qt-0.14.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556946015
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1598294206
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1556946015
+export SOURCE_DATE_EPOCH=1598294206
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libfm-qt
-cp LICENSE %{buildroot}/usr/share/package-licenses/libfm-qt/LICENSE
+cp %{_builddir}/libfm-qt-0.14.1/LICENSE %{buildroot}/usr/share/package-licenses/libfm-qt/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 pushd clr-build
 %make_install
 popd
@@ -241,4 +249,4 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libfm-qt/LICENSE
+/usr/share/package-licenses/libfm-qt/7fab4cd4eb7f499d60fe183607f046484acd6e2d
