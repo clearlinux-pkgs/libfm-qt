@@ -6,7 +6,7 @@
 #
 Name     : libfm-qt
 Version  : 0.15.1
-Release  : 13
+Release  : 14
 URL      : https://github.com/lxqt/libfm-qt/releases/download/0.15.1/libfm-qt-0.15.1.tar.xz
 Source0  : https://github.com/lxqt/libfm-qt/releases/download/0.15.1/libfm-qt-0.15.1.tar.xz
 Source1  : https://github.com/lxqt/libfm-qt/releases/download/0.15.1/libfm-qt-0.15.1.tar.xz.asc
