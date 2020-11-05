@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : libfm-qt
-Version  : 0.15.1
-Release  : 14
-URL      : https://github.com/lxqt/libfm-qt/releases/download/0.15.1/libfm-qt-0.15.1.tar.xz
-Source0  : https://github.com/lxqt/libfm-qt/releases/download/0.15.1/libfm-qt-0.15.1.tar.xz
-Source1  : https://github.com/lxqt/libfm-qt/releases/download/0.15.1/libfm-qt-0.15.1.tar.xz.asc
+Version  : 0.16.0
+Release  : 15
+URL      : https://github.com/lxqt/libfm-qt/releases/download/0.16.0/libfm-qt-0.16.0.tar.xz
+Source0  : https://github.com/lxqt/libfm-qt/releases/download/0.16.0/libfm-qt-0.16.0.tar.xz
+Source1  : https://github.com/lxqt/libfm-qt/releases/download/0.16.0/libfm-qt-0.16.0.tar.xz.asc
 Summary  : A Qt/glib/gio-based lib used to develop file managers providing some file management utilities.
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
@@ -73,15 +73,15 @@ license components for the libfm-qt package.
 
 
 %prep
-%setup -q -n libfm-qt-0.15.1
-cd %{_builddir}/libfm-qt-0.15.1
+%setup -q -n libfm-qt-0.16.0
+cd %{_builddir}/libfm-qt-0.16.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598898391
+export SOURCE_DATE_EPOCH=1604540292
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,11 +94,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1598898391
+export SOURCE_DATE_EPOCH=1604540292
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libfm-qt
-cp %{_builddir}/libfm-qt-0.15.1/LICENSE %{buildroot}/usr/share/package-licenses/libfm-qt/7fab4cd4eb7f499d60fe183607f046484acd6e2d
-cp %{_builddir}/libfm-qt-0.15.1/LICENSE.BSD-3-Clause %{buildroot}/usr/share/package-licenses/libfm-qt/095d1f504f6fd8add73a4e4964e37f260f332b6a
+cp %{_builddir}/libfm-qt-0.16.0/LICENSE %{buildroot}/usr/share/package-licenses/libfm-qt/7fab4cd4eb7f499d60fe183607f046484acd6e2d
+cp %{_builddir}/libfm-qt-0.16.0/LICENSE.BSD-3-Clause %{buildroot}/usr/share/package-licenses/libfm-qt/095d1f504f6fd8add73a4e4964e37f260f332b6a
 pushd clr-build
 %make_install
 popd
@@ -125,10 +125,12 @@ popd
 /usr/share/libfm-qt/translations/libfm-qt_fr.qm
 /usr/share/libfm-qt/translations/libfm-qt_gl.qm
 /usr/share/libfm-qt/translations/libfm-qt_he.qm
+/usr/share/libfm-qt/translations/libfm-qt_hr.qm
 /usr/share/libfm-qt/translations/libfm-qt_hu.qm
 /usr/share/libfm-qt/translations/libfm-qt_id.qm
 /usr/share/libfm-qt/translations/libfm-qt_it.qm
 /usr/share/libfm-qt/translations/libfm-qt_ja.qm
+/usr/share/libfm-qt/translations/libfm-qt_ko.qm
 /usr/share/libfm-qt/translations/libfm-qt_lt.qm
 /usr/share/libfm-qt/translations/libfm-qt_nb_NO.qm
 /usr/share/libfm-qt/translations/libfm-qt_nl.qm
@@ -206,6 +208,7 @@ popd
 /usr/include/libfm-qt/editbookmarksdialog.h
 /usr/include/libfm-qt/execfiledialog_p.h
 /usr/include/libfm-qt/filedialog.h
+/usr/include/libfm-qt/filedialog_p.h
 /usr/include/libfm-qt/filedialoghelper.h
 /usr/include/libfm-qt/filelauncher.h
 /usr/include/libfm-qt/filemenu.h
@@ -247,8 +250,8 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libfm-qt.so.7
-/usr/lib64/libfm-qt.so.7.0.0
+/usr/lib64/libfm-qt.so.8
+/usr/lib64/libfm-qt.so.8.0.0
 
 %files license
 %defattr(0644,root,root,0755)
