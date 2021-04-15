@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : libfm-qt
-Version  : 0.16.0
-Release  : 15
-URL      : https://github.com/lxqt/libfm-qt/releases/download/0.16.0/libfm-qt-0.16.0.tar.xz
-Source0  : https://github.com/lxqt/libfm-qt/releases/download/0.16.0/libfm-qt-0.16.0.tar.xz
-Source1  : https://github.com/lxqt/libfm-qt/releases/download/0.16.0/libfm-qt-0.16.0.tar.xz.asc
+Version  : 0.17.0
+Release  : 16
+URL      : https://github.com/lxqt/libfm-qt/releases/download/0.17.0/libfm-qt-0.17.0.tar.xz
+Source0  : https://github.com/lxqt/libfm-qt/releases/download/0.17.0/libfm-qt-0.17.0.tar.xz
+Source1  : https://github.com/lxqt/libfm-qt/releases/download/0.17.0/libfm-qt-0.17.0.tar.xz.asc
 Summary  : A Qt/glib/gio-based lib used to develop file managers providing some file management utilities.
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
@@ -20,7 +20,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : doxygen
 BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
-BuildRequires : liblxqt-data
+BuildRequires : liblxqt-dev
 BuildRequires : lxqt-build-tools
 BuildRequires : pkgconfig(libexif)
 BuildRequires : pkgconfig(libmenu-cache)
@@ -73,15 +73,15 @@ license components for the libfm-qt package.
 
 
 %prep
-%setup -q -n libfm-qt-0.16.0
-cd %{_builddir}/libfm-qt-0.16.0
+%setup -q -n libfm-qt-0.17.0
+cd %{_builddir}/libfm-qt-0.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604540292
+export SOURCE_DATE_EPOCH=1618504092
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,11 +94,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604540292
+export SOURCE_DATE_EPOCH=1618504092
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libfm-qt
-cp %{_builddir}/libfm-qt-0.16.0/LICENSE %{buildroot}/usr/share/package-licenses/libfm-qt/7fab4cd4eb7f499d60fe183607f046484acd6e2d
-cp %{_builddir}/libfm-qt-0.16.0/LICENSE.BSD-3-Clause %{buildroot}/usr/share/package-licenses/libfm-qt/095d1f504f6fd8add73a4e4964e37f260f332b6a
+cp %{_builddir}/libfm-qt-0.17.0/LICENSE %{buildroot}/usr/share/package-licenses/libfm-qt/7fab4cd4eb7f499d60fe183607f046484acd6e2d
+cp %{_builddir}/libfm-qt-0.17.0/LICENSE.BSD-3-Clause %{buildroot}/usr/share/package-licenses/libfm-qt/095d1f504f6fd8add73a4e4964e37f260f332b6a
 pushd clr-build
 %make_install
 popd
@@ -114,6 +114,7 @@ popd
 /usr/share/libfm-qt/translations/libfm-qt_ar.qm
 /usr/share/libfm-qt/translations/libfm-qt_arn.qm
 /usr/share/libfm-qt/translations/libfm-qt_ast.qm
+/usr/share/libfm-qt/translations/libfm-qt_bg.qm
 /usr/share/libfm-qt/translations/libfm-qt_ca.qm
 /usr/share/libfm-qt/translations/libfm-qt_cs.qm
 /usr/share/libfm-qt/translations/libfm-qt_cy.qm
@@ -122,6 +123,7 @@ popd
 /usr/share/libfm-qt/translations/libfm-qt_el.qm
 /usr/share/libfm-qt/translations/libfm-qt_en_GB.qm
 /usr/share/libfm-qt/translations/libfm-qt_es.qm
+/usr/share/libfm-qt/translations/libfm-qt_et.qm
 /usr/share/libfm-qt/translations/libfm-qt_fr.qm
 /usr/share/libfm-qt/translations/libfm-qt_gl.qm
 /usr/share/libfm-qt/translations/libfm-qt_he.qm
@@ -139,6 +141,7 @@ popd
 /usr/share/libfm-qt/translations/libfm-qt_pt.qm
 /usr/share/libfm-qt/translations/libfm-qt_pt_BR.qm
 /usr/share/libfm-qt/translations/libfm-qt_ru.qm
+/usr/share/libfm-qt/translations/libfm-qt_si.qm
 /usr/share/libfm-qt/translations/libfm-qt_tr.qm
 /usr/share/libfm-qt/translations/libfm-qt_uk.qm
 /usr/share/libfm-qt/translations/libfm-qt_zh_CN.qm
@@ -250,8 +253,8 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libfm-qt.so.8
-/usr/lib64/libfm-qt.so.8.0.0
+/usr/lib64/libfm-qt.so.9
+/usr/lib64/libfm-qt.so.9.0.0
 
 %files license
 %defattr(0644,root,root,0755)
