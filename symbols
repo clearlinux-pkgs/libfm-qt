@@ -96,6 +96,7 @@ libfm-qt.so.12:_ZN2Fm10FolderView11selectFilesERKNS_12FileInfoListEb
 libfm-qt.so.12:_ZN2Fm10FolderView11setIconSizeENS0_8ViewModeE5QSize
 libfm-qt.so.12:_ZN2Fm10FolderView11setViewModeENS0_8ViewModeE
 libfm-qt.so.12:_ZN2Fm10FolderView11sortChangedEv
+libfm-qt.so.12:_ZN2Fm10FolderView13dropIsDecidedEb
 libfm-qt.so.12:_ZN2Fm10FolderView13emitClickedAtENS0_9ClickTypeERK6QPoint
 libfm-qt.so.12:_ZN2Fm10FolderView13inlineRenamedERK7QStringS3_
 libfm-qt.so.12:_ZN2Fm10FolderView13onFileClickedEiRKSt10shared_ptrIKNS_8FileInfoEE
@@ -227,6 +228,7 @@ libfm-qt.so.12:_ZN2Fm11DirTreeView30openFolderInNewWindowRequestedERKNS_8FilePat
 libfm-qt.so.12:_ZN2Fm11DirTreeView6onOpenEv
 libfm-qt.so.12:_ZN2Fm11DirTreeView8onNewTabEv
 libfm-qt.so.12:_ZN2Fm11DirTreeView8setModelEP18QAbstractItemModel
+libfm-qt.so.12:_ZN2Fm11DirTreeView9dropEventEP10QDropEvent
 libfm-qt.so.12:_ZN2Fm11DirTreeViewC1EP7QWidget
 libfm-qt.so.12:_ZN2Fm11DirTreeViewC2EP7QWidget
 libfm-qt.so.12:_ZN2Fm11DirTreeViewD0Ev

@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : libfm-qt
-Version  : 1.2.0
-Release  : 21
-URL      : https://github.com/lxqt/libfm-qt/releases/download/1.2.0/libfm-qt-1.2.0.tar.xz
-Source0  : https://github.com/lxqt/libfm-qt/releases/download/1.2.0/libfm-qt-1.2.0.tar.xz
-Source1  : https://github.com/lxqt/libfm-qt/releases/download/1.2.0/libfm-qt-1.2.0.tar.xz.asc
+Version  : 1.2.1
+Release  : 22
+URL      : https://github.com/lxqt/libfm-qt/releases/download/1.2.1/libfm-qt-1.2.1.tar.xz
+Source0  : https://github.com/lxqt/libfm-qt/releases/download/1.2.1/libfm-qt-1.2.1.tar.xz
+Source1  : https://github.com/lxqt/libfm-qt/releases/download/1.2.1/libfm-qt-1.2.1.tar.xz.asc
 Summary  : A Qt/glib/gio-based lib used to develop file managers providing some file management utilities.
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
@@ -28,12 +28,15 @@ BuildRequires : pkgconfig(libmenu-cache)
 BuildRequires : qtbase-dev
 BuildRequires : qttools-dev
 BuildRequires : qtx11extras-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # libfm-qt
 ## Overview
-libfm-qt is the Qt port of libfm, a library providing components to build
-desktop file managers which belongs to [LXDE](https://lxde.org).
+libfm-qt is the Qt port of libfm, a library that provides components for building
+desktop file managers, belonging to [LXDE](https://lxde.org).
 
 %package data
 Summary: data components for the libfm-qt package.
@@ -74,28 +77,28 @@ license components for the libfm-qt package.
 
 
 %prep
-%setup -q -n libfm-qt-1.2.0
-cd %{_builddir}/libfm-qt-1.2.0
+%setup -q -n libfm-qt-1.2.1
+cd %{_builddir}/libfm-qt-1.2.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667836868
+export SOURCE_DATE_EPOCH=1672683533
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667836868
+export SOURCE_DATE_EPOCH=1672683533
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libfm-qt
 cp %{_builddir}/libfm-qt-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/libfm-qt/7fab4cd4eb7f499d60fe183607f046484acd6e2d || :
